@@ -22,15 +22,13 @@ parser.add_argument("timeoutMatch", help="Timeout for the ap <-> sta match (Seco
 args = parser.parse_args()
 
 
-global APDic
+global APDic #Contient la liste des APs ainsi que les stations qui sont associes avec.
 APDic = {}
 
-global APLinkSta
-APLinkSta = {}
 global broadcastMAC
 broadcastMAC = "ff:ff:ff:ff:ff:ff"
 
-
+# Cette fonction permet de tester des mac adresses selon s'il s'agit d'une AP, broadcast ou station et de faire les bonnes operations en consequences.
 def testAPAddress(ap, mac1, mac2):
     if ap in APDic:
         if not mac1 in APDic and not mac1 == broadcastMAC:
@@ -38,6 +36,7 @@ def testAPAddress(ap, mac1, mac2):
         if not mac2 in APDic and not mac2 == broadcastMAC:
             APDic[ap].add(mac2)
 
+# Remplit la liste (Dictionnaire) des APs via un sniffing des beacons.
 def sniffAPHandler(trame):
     if trame.haslayer(Dot11Beacon):
         if trame.haslayer(Dot11Elt):
@@ -46,6 +45,7 @@ def sniffAPHandler(trame):
                APDic[trame.addr3] = set()
 
 
+# Permet de relier les associations entre les APs et les stations presentes.
 def sniffCommAPandSTA(trame):
     if (trame.haslayer(Dot11) and trame.type == 2) or trame.haslayer(Dot11QoS) :
         testAPAddress(trame.addr1, trame.addr2, trame.addr3)
@@ -57,6 +57,7 @@ sniff(iface=args.interface, prn=sniffAPHandler, timeout=int(args.timeoutAP)) #ti
 
 sniff(iface=args.interface, prn=sniffCommAPandSTA, timeout=int(args.timeoutMatch)) 
 
+# Affichage
 print("APs                                       STAs")
 for key in APDic :
     if len(APDic[key]) > 0:

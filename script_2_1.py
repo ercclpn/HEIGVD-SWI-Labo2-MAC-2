@@ -18,7 +18,7 @@ parser.add_argument("interface", help="Interface monitoring")
 parser.add_argument("timeout", help="Timeout for the sniffing (Secondes)")
 args = parser.parse_args()
 
-global staDic
+global staDic # Contient la liste des stations visant un SSID particulier
 staDic = {}
 
 def sniffProbeReqHandler(trame):
@@ -31,6 +31,8 @@ def sniffProbeReqHandler(trame):
 
 sniff(iface=args.interface, prn=sniffProbeReqHandler, timeout=int(args.timeout)) #timeout en secondes
 
+
+# Affichage
 for key in staDic :
     result = key + " : "
     for val in staDic[key]:

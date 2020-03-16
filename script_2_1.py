@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.6
 
 """
-Ce script permet lister les differentes stations cherchant des SSIDs specifiquent. (Via des probe request)
+Ce script permet lister les differentes stations cherchant des SSIDs specifiques. (Via des probe request)
 
 Syntax d'utilisation : sudo python script_2_1.py interface timeout
 

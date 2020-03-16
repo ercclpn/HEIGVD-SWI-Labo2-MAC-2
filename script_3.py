@@ -5,6 +5,16 @@ import struct
 import string
 import argparse
 
+"""
+Ce script permet de découvrir des AP cachés en scannant des beacons puis des probe responses
+
+Syntax d'utilisation : sudo python script_3.py interface timeout
+
+Auteurs : Polier Florian, Tran Eric
+Date : 16.03.2020
+"""
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("interface", help="interface to scan on")
 parser.add_argument("timeout", help="time to scan")

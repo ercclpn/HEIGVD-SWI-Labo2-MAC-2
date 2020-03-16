@@ -1,6 +1,15 @@
 #!/usr/bin/env python3.6
 # Beacon forging based on : https://www.4armed.com/blog/forging-wifi-beacon-frames-using-scapy/
 
+"""
+Ce script permet de créer un evil twin lorsqu'une probe request a été scannée pour un AP spécifique
+
+Syntax d'utilisation : sudo python script_1.py ssid interface timeout
+
+Auteurs : Polier Florian, Tran Eric
+Date : 16.03.2020
+"""
+
 from scapy.all import *
 import argparse
 

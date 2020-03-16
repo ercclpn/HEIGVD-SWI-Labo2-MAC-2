@@ -23,6 +23,7 @@ staDic = {}
 
 def sniffProbeReqHandler(trame):
     if trame.haslayer(Dot11ProbeReq):
+        decodeInfo = trame.info.decode("utf-8")
         if not decodeInfo == "" : #Empty String non voulu
             if decodeInfo in staDic:
                 staDic[decodeInfo].add(trame.addr2)

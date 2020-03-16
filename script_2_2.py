@@ -40,7 +40,6 @@ def testAPAddress(ap, mac1, mac2):
 def sniffAPHandler(trame):
     if trame.haslayer(Dot11Beacon):
         if trame.haslayer(Dot11Elt):
-            decodeInfo = trame.info.decode("utf-8")
             if not trame.addr3 in APDic:
                APDic[trame.addr3] = set()
 

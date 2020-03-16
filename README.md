@@ -53,7 +53,13 @@ Pour la détection du SSID, vous devez utiliser Scapy. Pour proposer un evil twi
 
 __Question__ : comment ça se fait que ces trames puissent être lues par tout le monde ? Ne serait-il pas plus judicieux de les chiffrer ?
 
+__Réponse__ : Non. Les probes requests et les managements frames en général ne peuvent pas être chiffrées car tout les appareils, même ceux qui ne sont associés à aucun réseau, doivent pouvoir les lire. Si elles étaient chiffrées, il serait impossible pour un appareil non associé de les déchiffrer et donc de les comprendre.
+
 __Question__ : pourquoi les dispositifs iOS et Android récents ne peuvent-ils plus être tracés avec cette méthode ?
+
+__Réponse__ : Ce n'est pas tout à fait vrai. Bien que les devices récents randomisent leur adresse MAC afin d'être anonyme, c'est n'est pas encore toujours le cas et différente attaques existent contre ces mesures. Toutefois, il est vrai que cela complique le tracking direct. 
+
+Source : https://www.researchgate.net/publication/314361145_A_Study_of_MAC_Address_Randomization_in_Mobile_Devices_and_When_it_Fails
 
 
 ### 2. Détection de clients et réseaux
